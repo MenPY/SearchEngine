@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <style>
+        input:focus::placeholder {
+  color: transparent;
+}
+        ::placeholder{
+          color:white;
+        }
+        *{
+            font-size:25px;
+            outline:none;
+          }
+          input{
+              border-radius:10px;
+                padding:10px;
+            }
+            #inp{
+              border:none;
+                border-radius:0px;
+                border-bottom:1px solid black;
+                background-color:#EE3D48;
+                color:white;
+            }
+            #sub{
+              border:none;
+                font-size:30px;
+                width:80px;
+                background:none;
+            }
+            #imgs>*{
+              text-align:center;
+                flex: 50%;
+                margin-top: 2%;
+                margin-left: 10px;
+                border-radius: 10px;
+            }
+            #imgs{
+                margin-left:25%;
+                margin-right: 10%;
+            }
+            #srch>*{
+              text-align:center;
+            }
+        </style>
+        <title>
+            Search Engine
+        </title>
+    </head>
+    <body style="background-color:#EE3D48">
+        <div id="srch">
+          <form  action = "{% url 'output' %}" method="POST">
+              {% csrf_token %}
+              <input type="text" name="my_input" id="inp" placeholder="Type your text here...">
+              <input type = "submit" id="sub" value = "🍳" method="post">
+          </form>
+        </div>
+         <div id="imgs">
+          {% if row %}
+            {{ row  | safe}}
+            {% endif %}
+        </div>
+    </body>
+</html>
